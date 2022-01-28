@@ -13,6 +13,6 @@
   "author": "Hampton",
   "license": "MIT",
   "dependencies": {
-    "@drizzle/store": "^1.5.3"
+    "@drizzle/store": "^0.8.0"   
   }
 }
