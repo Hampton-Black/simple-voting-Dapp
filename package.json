@@ -2,9 +2,10 @@
   "name": "practiceproject-1",
   "version": "1.0.0",
   "description": "practice Dapp",
-  "main": "index.js",
+  "main": "truffle-config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -13,6 +14,9 @@
   "author": "Hampton",
   "license": "MIT",
   "dependencies": {
-    "@drizzle/store": "^0.8.0"   
+    "@drizzle/store": "^1.5.3"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
   }
 }
