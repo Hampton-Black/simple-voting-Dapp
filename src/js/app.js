@@ -10,8 +10,8 @@ App = {
   initWeb3: function() {
     if(typeof web3 !== 'undefined') {
       // if a web3 instance is already provided by Metamask
-      App.web3Provider = web3.currentProvider;
-      web3 = new Web3(web3.currentProvider);
+      App.web3Provider = ethereum; 
+      //web3 = new Web3(web3.currentProvider);
     } else {
       // specify default instance if no web3 instance provided
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
@@ -58,7 +58,7 @@ App = {
     });
   },
 
-  render: function() {
+  render: async function() {
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
@@ -67,12 +67,13 @@ App = {
     content.hide();
 
     // load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
+    if(window.ethereum) {
+      ethereum.enable().then(function(acc) {
+        App.account = acc[0];
         $("#accountAddress").html("Your Account: " + account);
-      }
-    });
+      });
+    }
+
 
     // load contract data
     App.contracts.Election.deployed().then(function(instance) {
